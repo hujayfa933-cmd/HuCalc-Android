@@ -1,0 +1,106 @@
+package com.example.calculator.engine
+
+data class ScientificConstant(
+    val code: String,
+    val symbol: String,
+    val name: String,
+    val value: Double,
+    val unit: String
+)
+
+data class UnitConversion(
+    val code: String,
+    val name: String,
+    val fromUnit: String,
+    val toUnit: String,
+    val convert: (Double) -> Double
+)
+
+object Fx991ConstantsAndConversions {
+
+    val CONSTANTS = listOf(
+        ScientificConstant("01", "mp", "Proton mass", 1.67262192369e-27, "kg"),
+        ScientificConstant("02", "mn", "Neutron mass", 1.67492749804e-27, "kg"),
+        ScientificConstant("03", "me", "Electron mass", 9.1093837015e-31, "kg"),
+        ScientificConstant("04", "mμ", "Muon mass", 1.883531627e-28, "kg"),
+        ScientificConstant("05", "a0", "Bohr radius", 5.29177210903e-11, "m"),
+        ScientificConstant("06", "h", "Planck constant", 6.62607015e-34, "J s"),
+        ScientificConstant("07", "μN", "Nuclear magneton", 5.0507837461e-27, "J/T"),
+        ScientificConstant("08", "μB", "Bohr magneton", 9.2740100783e-24, "J/T"),
+        ScientificConstant("09", "ħ", "Reduced Planck", 1.054571817e-34, "J s"),
+        ScientificConstant("10", "α", "Fine-structure", 7.2973525693e-3, ""),
+        ScientificConstant("11", "re", "Electron radius", 2.8179403262e-15, "m"),
+        ScientificConstant("12", "λc", "Compton wavelength", 2.42631023867e-12, "m"),
+        ScientificConstant("13", "γp", "Proton gyromag.", 2.6752218744e8, "s⁻¹ T⁻¹"),
+        ScientificConstant("14", "λcp", "Proton Compton", 1.32140985396e-15, "m"),
+        ScientificConstant("15", "λcn", "Neutron Compton", 1.31959090581e-15, "m"),
+        ScientificConstant("16", "R∞", "Rydberg constant", 10973731.568160, "m⁻¹"),
+        ScientificConstant("17", "u", "Atomic mass unit", 1.66053906660e-27, "kg"),
+        ScientificConstant("18", "μp", "Proton moment", 1.41060679736e-26, "J/T"),
+        ScientificConstant("19", "μe", "Electron moment", -9.2847647043e-24, "J/T"),
+        ScientificConstant("20", "μn", "Neutron moment", -9.6623651e-27, "J/T"),
+        ScientificConstant("21", "μμ", "Muon moment", -4.49044830e-26, "J/T"),
+        ScientificConstant("22", "F", "Faraday constant", 96485.33212, "C/mol"),
+        ScientificConstant("23", "e", "Elementary charge", 1.602176634e-19, "C"),
+        ScientificConstant("24", "NA", "Avogadro const.", 6.02214076e23, "mol⁻¹"),
+        ScientificConstant("25", "k", "Boltzmann const.", 1.380649e-23, "J/K"),
+        ScientificConstant("26", "Vm", "Molar volume", 0.02271095464, "m³/mol"),
+        ScientificConstant("27", "R", "Molar gas const.", 8.314462618, "J/(mol K)"),
+        ScientificConstant("28", "c0", "Speed of light", 299792458.0, "m/s"),
+        ScientificConstant("29", "c1", "First radiation", 3.741771852e-16, "W m²"),
+        ScientificConstant("30", "c2", "Second radiation", 0.01438776877, "m K"),
+        ScientificConstant("31", "σ", "Stefan-Boltzmann", 5.670374419e-8, "W/(m² K⁴)"),
+        ScientificConstant("32", "ε0", "Permittivity", 8.8541878128e-12, "F/m"),
+        ScientificConstant("33", "μ0", "Permeability", 1.25663706212e-6, "N/A²"),
+        ScientificConstant("34", "Φ0", "Magnetic flux q.", 2.067833848e-15, "Wb"),
+        ScientificConstant("35", "g", "Standard gravity", 9.80665, "m/s²"),
+        ScientificConstant("36", "G0", "Conductance q.", 7.748091729e-5, "S"),
+        ScientificConstant("37", "Z0", "Vacuum impedance", 376.730313668, "Ω"),
+        ScientificConstant("38", "t", "Celsius temp.", 273.15, "K"),
+        ScientificConstant("39", "G", "Gravitational", 6.67430e-11, "m³/(kg s²)"),
+        ScientificConstant("40", "atm", "Standard atm.", 101325.0, "Pa")
+    )
+
+    val CONVERSIONS = listOf(
+        UnitConversion("01", "in ➔ cm", "in", "cm") { it * 2.54 },
+        UnitConversion("02", "cm ➔ in", "cm", "in") { it / 2.54 },
+        UnitConversion("03", "ft ➔ m", "ft", "m") { it * 0.3048 },
+        UnitConversion("04", "m ➔ ft", "m", "ft") { it / 0.3048 },
+        UnitConversion("05", "yd ➔ m", "yd", "m") { it * 0.9144 },
+        UnitConversion("06", "m ➔ yd", "m", "yd") { it / 0.9144 },
+        UnitConversion("07", "mile ➔ km", "mile", "km") { it * 1.609344 },
+        UnitConversion("08", "km ➔ mile", "km", "mile") { it / 1.609344 },
+        UnitConversion("09", "n mile ➔ m", "n mile", "m") { it * 1852.0 },
+        UnitConversion("10", "m ➔ n mile", "m", "n mile") { it / 1852.0 },
+        UnitConversion("11", "acre ➔ m²", "acre", "m²") { it * 4046.8564224 },
+        UnitConversion("12", "m² ➔ acre", "m²", "acre") { it / 4046.8564224 },
+        UnitConversion("13", "gal(US) ➔ L", "gal", "L") { it * 3.785411784 },
+        UnitConversion("14", "L ➔ gal(US)", "L", "gal") { it / 3.785411784 },
+        UnitConversion("15", "gal(UK) ➔ L", "gal(UK)", "L") { it * 4.54609 },
+        UnitConversion("16", "L ➔ gal(UK)", "L", "gal(UK)") { it / 4.54609 },
+        UnitConversion("17", "pc ➔ km", "pc", "km") { it * 3.085677581e13 },
+        UnitConversion("18", "km ➔ pc", "km", "pc") { it / 3.085677581e13 },
+        UnitConversion("19", "km/h ➔ m/s", "km/h", "m/s") { it / 3.6 },
+        UnitConversion("20", "m/s ➔ km/h", "m/s", "km/h") { it * 3.6 },
+        UnitConversion("21", "oz ➔ g", "oz", "g") { it * 28.349523125 },
+        UnitConversion("22", "g ➔ oz", "g", "oz") { it / 28.349523125 },
+        UnitConversion("23", "lb ➔ kg", "lb", "kg") { it * 0.45359237 },
+        UnitConversion("24", "kg ➔ lb", "kg", "lb") { it / 0.45359237 },
+        UnitConversion("25", "atm ➔ Pa", "atm", "Pa") { it * 101325.0 },
+        UnitConversion("26", "Pa ➔ atm", "Pa", "atm") { it / 101325.0 },
+        UnitConversion("27", "bar ➔ Pa", "bar", "Pa") { it * 100000.0 },
+        UnitConversion("28", "Pa ➔ bar", "Pa", "bar") { it / 100000.0 },
+        UnitConversion("29", "hp ➔ kW", "hp", "kW") { it * 0.74569987158227022 },
+        UnitConversion("30", "kW ➔ hp", "kW", "hp") { it / 0.74569987158227022 },
+        UnitConversion("31", "kgf/cm² ➔ Pa", "kgf/cm²", "Pa") { it * 98066.5 },
+        UnitConversion("32", "Pa ➔ kgf/cm²", "Pa", "kgf/cm²") { it / 98066.5 },
+        UnitConversion("33", "mmHg ➔ Pa", "mmHg", "Pa") { it * 133.322387415 },
+        UnitConversion("34", "Pa ➔ mmHg", "Pa", "mmHg") { it / 133.322387415 },
+        UnitConversion("35", "cal ➔ J", "cal", "J") { it * 4.184 },
+        UnitConversion("36", "J ➔ cal", "J", "cal") { it / 4.184 },
+        UnitConversion("37", "°F ➔ °C", "°F", "°C") { (it - 32.0) * 5.0 / 9.0 },
+        UnitConversion("38", "°C ➔ °F", "°C", "°F") { it * 9.0 / 5.0 + 32.0 },
+        UnitConversion("39", "J ➔ eV", "J", "eV") { it / 1.602176634e-19 },
+        UnitConversion("40", "eV ➔ J", "eV", "J") { it * 1.602176634e-19 }
+    )
+}

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">HuCalc</string>
+    <string name="mode_general">General</string>
+    <string name="mode_scientific">Scientific</string>
+    <string name="history_title">Calculation History</string>
+    <string name="about_title">About</string>
+    <string name="about_subtitle">General &amp; Scientific Calculator</string>
+    <string name="about_description">A fast, accurate, offline calculator for everyday mathematics and advanced scientific calculations.</string>
+    <string name="about_developer">Made by Hujayfa</string>
+    <string name="clear_history">Clear History</string>
+    <string name="history_empty">No calculation history yet</string>
+    <string name="copied_to_clipboard">Copied to clipboard</string>
+    <string name="angle_deg">DEG</string>
+    <string name="angle_rad">RAD</string>
+</resources>

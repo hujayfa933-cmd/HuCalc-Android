@@ -1,0 +1,6 @@
+{
+  "name": "HuCalc",
+  "description": "HuCalc - A powerful and classic General & Scientific Calculator with fx-991ES PLUS functions, history, and tactile keyboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
